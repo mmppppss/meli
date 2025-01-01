@@ -4,7 +4,7 @@ from Writer.Writer import Writer
 import argparse
 
 def main():
-    parser = argparse.ArgumentParser(description='Mi programa')
+    parser = argparse.ArgumentParser(description='Transpilador a HTML')
 
     parser.add_argument('-i', '--input', help='Archivo de entrada', required=True)
     parser.add_argument('-o', '--output', help='Archivo de salida', required=True)
