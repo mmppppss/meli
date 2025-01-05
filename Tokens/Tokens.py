@@ -1,4 +1,5 @@
 class Tokens:
+    BOX = "BOX"
     TXT = "TXT"
     IMG = "IMG"
     LNK = "LNK"
@@ -11,6 +12,8 @@ class Tokens:
     BTN = "BTN"
 
     BSL = "BSL"
+    NAM = "NAM"
+    THM = "THM"
 
     CAD = "CAD"
     PCI = "PCI"
@@ -19,9 +22,12 @@ class Tokens:
     COM = "COM"
     NAT = "NAT"
 
+    NLN = "NLN"
+    BLD = "BLD"
+    ITL = "ITL"
     reservados = ["text", "img", "link", "title", "list",
-                  "form", "input", "row", "table", "button"]
-    tkns = [TXT, IMG, LNK, TLE, LST, FRM, INP, ROW, TBL, BTN]
+                  "form", "input", "row", "table", "button", "box", "name", "theme", "n", "b", "i"]
+    tkns = [TXT, IMG, LNK, TLE, LST, FRM, INP, ROW, TBL, BTN, BOX, NAM, THM,  NLN, BLD, ITL, BSL]
 def reserved(id):
     if id in Tokens.reservados:
         return Tokens.tkns[Tokens.reservados.index(id)]

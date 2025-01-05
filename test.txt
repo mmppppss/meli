@@ -1,3 +1,0 @@
-text("hola")
-text("mundo")
-text("esta es una prueba")

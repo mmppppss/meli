@@ -1,0 +1,16 @@
+:root {
+    --primary-color: #3498db; /* Color primario: azul */
+    --secondary-color: #ecf0f1; /* Color de fondo secundario: gris claro */
+    --background-color: #ffffff; /* Fondo blanco */
+    --text-color: #2c3e50; /* Texto principal: gris oscuro */
+    --text-secondary-color: #7f8c8d; /* Texto secundario: gris más claro */
+    --button-background: #3498db; /* Fondo de los botones */
+    --button-text-color: #ffffff; /* Color de texto de los botones */
+    --border-radius: 8px; /* Bordes redondeados */
+    --box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    --input-background: #ffffff; /* Fondo de los inputs */
+    --input-border: #bdc3c7; /* Borde de los inputs */
+    --input-focus-border: #3498db; /* Borde de los inputs al foco */
+    --link-color: #3498db; /* Color de los enlaces */
+    --disabled-opacity: 0.6; /* Opacidad para elementos deshabilitados */
+}

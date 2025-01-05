@@ -15,10 +15,10 @@ class Analex:
         estado = 0
         #print("analex")
         #while True:
-        while self.reader.pos <= len(self.reader.content)-1:
+        while self.reader.pos <= len(self.reader.content):
             c = self.reader.getCC()
             if estado == 0: 
-                if c == " " or c == "\n":
+                if c == " " or c == "\n" or c == "\t":
                     self.reader.avanzar()
                 elif c == "\"":
                     estado = 1

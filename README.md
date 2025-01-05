@@ -11,6 +11,29 @@ Programa para hacer intefaces modernas
     genera:
         <span>contenido</span>
 
+- Salto de linea
+    `\n`
+    genera:
+        <br>
+
+- Poner titulo a la pagina:
+    `\name "Titulo"`
+    Estable title :
+        <title>Titulo</title>
+
+- Establecer tema:
+    `\theme "tema"`
+    Estable el tema:
+        <link rel="stylesheet" href="tema.css">
+
+- Contenedor vertical
+    `box( elem1, elem2, ..., elemN)`
+    admite cualquier elemento dentro de si
+
+- Contenedor horizontal
+    `row(elem1, elem2, ..., elemN)`
+    admite cualquier elemento dentro de si
+
 
 
 

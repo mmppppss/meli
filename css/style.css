@@ -1,0 +1,148 @@
+/* Estilos generales */
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Contenedor principal */
+.box {
+    display: flex;
+    flex-direction: column;
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: var(--secondary-color);
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+}
+
+/* Contenedor de fila (horizontal) */
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: space-between;
+}
+
+/* Encabezados */
+h1, h2, h3, h4, h5, h6 {
+    color: var(--text-color);
+    margin-bottom: 10px;
+}
+
+/* Links */
+a {
+    color: var(--link-color);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: darken(var(--link-color), 10%);
+}
+
+/* Botones */
+button {
+    background-color: var(--button-background);
+    color: var(--button-text-color);
+    border: none;
+    padding: 12px 24px;
+font-size: 16px;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    box-shadow: var(--box-shadow);
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+button:hover {
+    background-color: darken(var(--button-background), 10%);
+    box-shadow: 0px 6px 16px rgba(0, 0, 0, 0.2);
+}
+
+button:disabled {
+    background-color: #d0d0d5;
+    cursor: not-allowed;
+    opacity: var(--disabled-opacity);
+}
+
+/* Inputs */
+input, textarea {
+    background-color: var(--input-background);
+    border: 1px solid var(--input-border);
+    padding: 10px;
+    border-radius: var(--border-radius);
+    width: 100%;
+    font-size: 16px;
+    box-sizing: border-box;
+    transition: border-color 0.3s ease;
+}
+
+input:focus, textarea:focus {
+    border-color: var(--input-focus-border);
+    outline: none;
+}
+
+/* Tarjetas */
+.card {
+    background-color: var(--background-color);
+    border-radius: var(--border-radius);
+    padding: 20px;
+    box-shadow: var(--box-shadow);
+    margin-bottom: 20px;
+}
+
+.card-header {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.card-body {
+    font-size: 16px;
+    color: var(--text-secondary-color);
+}
+
+/* Componentes de menú */
+nav {
+    background-color: var(--primary-color);
+    padding: 10px 20px;
+	border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+}
+
+nav a {
+    color: var(--button-text-color);
+    margin-right: 20px;
+    font-size: 16px;
+    transition: color 0.3s ease;
+}
+
+nav a:hover {
+    color: #f4f4f7;
+}
+
+/* Contenedor de sección */
+.section {
+    margin: 20px 0;
+}
+
+/* Lista de elementos */
+ul {
+    padding-left: 20px;
+    list-style-type: none;
+}
+
+ul li {
+    margin-bottom: 10px;
+}
+
+ul li::before {
+    content: "•";
+    margin-right: 10px;
+    color: var(--primary-color);
+    font-size: 18px;
+}

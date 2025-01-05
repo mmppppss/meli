@@ -21,6 +21,7 @@ class Reader():
                     self.lines.append(posi)
                     posi += len(line)
                     i+=1
+                self.content+='\0'
                 self.size = len(self.content)
         except FileNotFoundError:
             print("Archivo", self.filename, "no encontrado")

@@ -1,0 +1,17 @@
+:root {
+    --primary-color: #007aff; /* Color principal (azul Cupertino) */
+    --secondary-color: #f4f4f7; /* Color de fondo secundario */
+    --background-color: #ffffff; /* Fondo blanco */
+    --text-color: #333333; /* Color de texto principal */
+    --text-secondary-color: #666666; /* Color de texto secundario */
+    --button-background: #007aff; /* Fondo de botones */
+    --button-text-color: #ffffff; /* Color de texto de botones */
+    --border-radius: 12px; /* Bordes redondeados */
+    --box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    --input-background: #f0f0f5; /* Fondo de los inputs */
+    --input-border: #d0d0d5; /* Borde de los inputs */
+    --input-focus-border: #007aff; /* Borde de los inputs al foco */
+	--link-color: #007aff; /* Color de los links */
+    --disabled-opacity: 0.5; /* Opacidad para elementos deshabilitados */
+}
+
