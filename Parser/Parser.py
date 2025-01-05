@@ -26,12 +26,18 @@ class Parser:
         tk = self.analex.TK.tokenType;
         if tk == Tokens.TXT :
             self.text()
-        if tk == Tokens.BSL :
+        if tk == Tokens.BSL : #incluye name theme nwline etc
             self.set()
         if tk == Tokens.BOX :
             self.box("box")
         if tk == Tokens.ROW :
             self.box("row")
+        if tk == Tokens.TLE:
+            self.title()
+        if tk == Tokens.LNK:
+            self.link()
+        if tk == Tokens.BTN:
+            self.button()
 
 
     def text(self):
@@ -92,8 +98,96 @@ class Parser:
             self.analex.analex()
             self.sentencia()
             self.moreSent()
+    def title(self):
+        self.analex.analex()
+        tempSize = 1
+        if self.analex.TK.tokenType == Tokens.NUM:
+            tempSize = int(self.analex.TK.value);
+            self.analex.analex()
+        if self.analex.TK.tokenType == Tokens.PAP:
+            self.analex.analex()
+            if self.analex.TK.tokenType == Tokens.CAD:
+                self.result+=f"<h{tempSize}>{self.analex.TK.value}</h{tempSize}>"
+                self.analex.analex()
+                if self.analex.TK.tokenType == Tokens.PCI:
+                    self.analex.analex()
+                else:
+                    print("ERROR(title) se esperaba )")
+            else:
+                print("ERROR(title) se esperaba un STRING")
         else:
-            pass
+            print("ERROR(title) se esperaba (")
+
+    def link(self):
+        self.analex.analex()
+        if self.analex.TK.tokenType == Tokens.PAP:
+            self.analex.analex()
+            alt = ""
+            href = ""
+            if self.analex.TK.tokenType == Tokens.CAD:
+                alt = self.analex.TK.value
+                self.analex.analex()
+            else:
+                print("ERROR(link) Se esperaba un STRING")
+                exit(1)
+            if self.analex.TK.tokenType == Tokens.COM:
+                self.analex.analex()
+            else:
+                print("ERROR(link) Se esperaba una Comma")
+                exit(1)
+            if self.analex.TK.tokenType == Tokens.CAD:
+                href = self.analex.TK.value
+                self.analex.analex()
+            else:
+                print("ERROR(link) Se esperaba una CADENA")
+                exit(1)
+            if self.analex.TK.tokenType == Tokens.PCI:
+                self.analex.analex()
+            else:
+                print("ERROR(link) Se esperaba )")
+                exit(1)
+
+
+            self.result+=f"<a href={href}>{alt}</a>"
+        else:
+            print("ERROR(title) se esperaba (")
+    def button(self):
+        self.analex.analex()
+        if self.analex.TK.tokenType == Tokens.PAP:
+            self.analex.analex()
+            alt = ""
+            action = ""
+            if self.analex.TK.tokenType == Tokens.CAD:
+                alt = self.analex.TK.value
+                self.analex.analex()
+            else:
+                print("ERROR(link) Se esperaba un STRING")
+                exit(1)
+            if self.analex.TK.tokenType == Tokens.COM:
+                self.analex.analex()
+            else:
+                print("ERROR(link) Se esperaba una Comma")
+                exit(1)
+            if self.analex.TK.tokenType == Tokens.CAD:
+                action= self.analex.TK.value
+                print(self.analex.TK.value)
+                self.analex.analex()
+            else:
+                print("ERROR(link) Se esperaba una CADENA")
+                exit(1)
+            if self.analex.TK.tokenType == Tokens.PCI:
+                self.analex.analex()
+            else:
+                print("ERROR(link) Se esperaba )")
+                exit(1)
+            self.result+=f'<button onclick="{action.replace('"',"'")}">{alt}</button>'
+        else:
+            print("ERROR(title) se esperaba (")
+
+
+
+
+
 
     
 

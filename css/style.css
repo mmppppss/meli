@@ -10,22 +10,21 @@ body {
 
 /* Contenedor principal */
 .box {
-    display: flex;
-    flex-direction: column;
-    max-width: 1200px;
-    margin: 20px auto;
+    display: grid;
+    margin: 20px;
     padding: 20px;
     background-color: var(--secondary-color);
     border-radius: var(--border-radius);
     box-shadow: var(--box-shadow);
+	align-content: center;
+	justify-content: center;
 }
 
 /* Contenedor de fila (horizontal) */
 .row {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    justify-content: space-between;
+	display: flex;
+	align-items: center;
+	justify-content: center;
 }
 
 /* Encabezados */

@@ -39,8 +39,12 @@ class Analex:
                 elif c == "\\":
                     estado = 9
                     self.reader.avanzar()
+                elif c.isdigit():
+                    estado = 10
+                    ac=ac+c
+                    self.reader.avanzar()
                 else:
-                    print("ERROR",c)
+                    #print("ERROR",c)
                     return
             elif estado == 1:
                 if c == "\\":
@@ -87,5 +91,16 @@ class Analex:
             elif estado == 9:
                 self.TK.createToken(Tokens.BSL, "_")
                 return
+            elif estado == 10:
+                if c.isdigit():
+                    estado = 10
+                    ac=ac+c
+                    self.reader.avanzar()
+                else:
+                    estado = 11
+            elif estado == 11:
+                self.TK.createToken(Tokens.NUM, ac)
+                return
+
 
 

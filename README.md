@@ -34,6 +34,22 @@ Programa para hacer intefaces modernas
     `row(elem1, elem2, ..., elemN)`
     admite cualquier elemento dentro de si
 
+- Header (h1, h2, ..., hn)
+    title("content")
+    title2("header 2")
+    title3("header 3")
+    ...
+    genera:
+        <h1>content</h1>
+        <h2>header 2</h2>
+        <h3>header 3</h3>
+
+- Link enlaces rutas
+    link("nombre", "/ruta")
+    link("google", "https://google.com")
+    genera:
+        <a href="/ruta">nombre</a>
+        <a href="https://google.com">google</a>
 
 
 

@@ -22,9 +22,12 @@ class Tokens:
     COM = "COM"
     NAT = "NAT"
 
-    NLN = "NLN"
-    BLD = "BLD"
-    ITL = "ITL"
+    NLN = "NLN"#new line
+    BLD = "BLD"#bold
+    ITL = "ITL"#italic
+
+    NUM = "NUM"
+
     reservados = ["text", "img", "link", "title", "list",
                   "form", "input", "row", "table", "button", "box", "name", "theme", "n", "b", "i"]
     tkns = [TXT, IMG, LNK, TLE, LST, FRM, INP, ROW, TBL, BTN, BOX, NAM, THM,  NLN, BLD, ITL, BSL]
@@ -37,7 +40,7 @@ def reserved(id):
 class Token:
     def __init__(self) -> None:
         self.tokenType = Tokens.NAT
-        self.value = None
+        self.value:str = ""
     def createToken(self, type, content):
         self.tokenType = type
         self.value = content
