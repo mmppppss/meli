@@ -51,12 +51,22 @@ Programa para hacer intefaces modernas
         <a href="/ruta">nombre</a>
         <a href="https://google.com">google</a>
 
+- Imagen
+    image("ruta/a/la/imagen", "css")
+    genera:
+        <img src="ruta/a/la/imagen" style="css">
+
+- Botones:
+    button("nombre", "accion")
+    genera:
+        <button onclick="accion">nombre</button>
 
 
 
-
-
-
+## temas disponibles:
+    normal
+    cupertino
+    gruvbox
 
 
 ## elementos

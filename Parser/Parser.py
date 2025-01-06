@@ -17,7 +17,6 @@ class Parser:
         return self.analex.TK.tokenType in Tokens.tkns
 
     def codigo(self):
-        self.analex.TK.printTK()
         if self.isValid():
             self.sentencia()
             self.codigo()
@@ -38,6 +37,8 @@ class Parser:
             self.link()
         if tk == Tokens.BTN:
             self.button()
+        if tk == Tokens.IMG:
+            self.imagen()
 
 
     def text(self):
@@ -45,7 +46,7 @@ class Parser:
         if self.analex.TK.tokenType == Tokens.PAP:
             self.analex.analex()
             if self.analex.TK.tokenType == Tokens.CAD:
-                temp=f"<span>{self.analex.TK.value}</span>\n "
+                temp=f"<span>{self.analex.TK.value}</span>\n"
                 self.analex.analex()
                 if self.analex.TK.tokenType == Tokens.PCI:
                     self.result+=temp
@@ -69,7 +70,7 @@ class Parser:
                 print("ERROR: Se esperaba una cadena")
         elif tk == Tokens.NLN: 
             self.analex.analex()
-            self.result+="<br>"
+            self.result+="<br>\n"
         elif tk == Tokens.THM:
             self.analex.analex()
             tk = self.analex.TK.tokenType
@@ -107,7 +108,7 @@ class Parser:
         if self.analex.TK.tokenType == Tokens.PAP:
             self.analex.analex()
             if self.analex.TK.tokenType == Tokens.CAD:
-                self.result+=f"<h{tempSize}>{self.analex.TK.value}</h{tempSize}>"
+                self.result+=f"<h{tempSize}>{self.analex.TK.value}</h{tempSize}>\n"
                 self.analex.analex()
                 if self.analex.TK.tokenType == Tokens.PCI:
                     self.analex.analex()
@@ -146,9 +147,7 @@ class Parser:
             else:
                 print("ERROR(link) Se esperaba )")
                 exit(1)
-
-
-            self.result+=f"<a href={href}>{alt}</a>"
+            self.result+=f"<a href={href}>{alt}</a>\n"
         else:
             print("ERROR(title) se esperaba (")
     def button(self):
@@ -170,7 +169,6 @@ class Parser:
                 exit(1)
             if self.analex.TK.tokenType == Tokens.CAD:
                 action= self.analex.TK.value
-                print(self.analex.TK.value)
                 self.analex.analex()
             else:
                 print("ERROR(link) Se esperaba una CADENA")
@@ -180,21 +178,41 @@ class Parser:
             else:
                 print("ERROR(link) Se esperaba )")
                 exit(1)
-            self.result+=f'<button onclick="{action.replace('"',"'")}">{alt}</button>'
+            self.result+=f'<button onclick="{action.replace('"',"'")}">{alt}</button>\n'
         else:
             print("ERROR(title) se esperaba (")
-
-
-
-
-
-
     
-
-
-
-
-
+    def imagen(self):
+        self.analex.analex()
+        if self.analex.TK.tokenType == Tokens.PAP:
+            self.analex.analex()
+            css = ""
+            ruta = ""
+            if self.analex.TK.tokenType == Tokens.CAD:
+                ruta = self.analex.TK.value
+                self.analex.analex()
+            else:
+                print("ERROR(link) Se esperaba un STRING")
+                exit(1)
+            if self.analex.TK.tokenType == Tokens.COM:
+                self.analex.analex()
+            else:
+                print("ERROR(link) Se esperaba una Comma")
+                exit(1)
+            if self.analex.TK.tokenType == Tokens.CAD:
+                css= self.analex.TK.value
+                self.analex.analex()
+            else:
+                print("ERROR(link) Se esperaba una CADENA")
+                exit(1)
+            if self.analex.TK.tokenType == Tokens.PCI:
+                self.analex.analex()
+            else:
+                print("ERROR(link) Se esperaba )")
+                exit(1)
+            self.result+=f'<img src="{ruta}" style="{css.replace('\"', '\'')}">\n'
+        else:
+            print("ERROR(title) se esperaba (")
 
     def getResult(self):
         return f"""<!DOCTYPE html>
@@ -206,7 +224,9 @@ class Parser:
         <link rel="stylesheet" href="css/style.css">
     </head>
     <body>
-        {self.result}
+
+{self.result}
+
         <br>
         <span>powered by M.E.L.I. preAlpha 0.0.1 </span>
     </body>

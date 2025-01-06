@@ -28,7 +28,7 @@ class Tokens:
 
     NUM = "NUM"
 
-    reservados = ["text", "img", "link", "title", "list",
+    reservados = ["text", "image", "link", "title", "list",
                   "form", "input", "row", "table", "button", "box", "name", "theme", "n", "b", "i"]
     tkns = [TXT, IMG, LNK, TLE, LST, FRM, INP, ROW, TBL, BTN, BOX, NAM, THM,  NLN, BLD, ITL, BSL]
 def reserved(id):

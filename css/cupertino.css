@@ -1,17 +1,21 @@
 :root {
-    --primary-color: #007aff; /* Color principal (azul Cupertino) */
-    --secondary-color: #f4f4f7; /* Color de fondo secundario */
+    /* Colores del tema */
+    --primary-color: #3498db; /* Azul */
+    --secondary-color: #ecf0f1; /* Gris claro */
     --background-color: #ffffff; /* Fondo blanco */
-    --text-color: #333333; /* Color de texto principal */
-    --text-secondary-color: #666666; /* Color de texto secundario */
-    --button-background: #007aff; /* Fondo de botones */
-    --button-text-color: #ffffff; /* Color de texto de botones */
-    --border-radius: 12px; /* Bordes redondeados */
-    --box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1); /* Sombra suave */
-    --input-background: #f0f0f5; /* Fondo de los inputs */
-    --input-border: #d0d0d5; /* Borde de los inputs */
-    --input-focus-border: #007aff; /* Borde de los inputs al foco */
-	--link-color: #007aff; /* Color de los links */
-    --disabled-opacity: 0.5; /* Opacidad para elementos deshabilitados */
+    --text-color: #2c3e50; /* Texto oscuro */
+    --text-secondary-color: #7f8c8d; /* Texto secundario */
+    --button-background: #3498db; /* Fondo de botones */
+    --button-text-color: #ffffff; /* Texto de botones */
+    --button-hover-background: #2980b9; /* Fondo de botones en hover */
+    --button-hover-background-dark: #1c5985; /* Fondo de botones en hover más oscuro */
+	--input-background: #f0f0f5; /* Fondo de los inputs */
+    --input-border: #bdc3c7; /* Borde de los inputs */
+    --input-focus-border: #3498db; /* Borde de los inputs al foco */
+    --link-color: #3498db; /* Color de enlaces */
+    --link-hover-color: #2980b9; /* Color de enlaces en hover */
+    --border-radius: 8px; /* Bordes redondeados */
+    --box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    --disabled-opacity: 0.6; /* Opacidad para elementos deshabilitados */
+	--font: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue"
 }
-

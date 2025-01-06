@@ -1,5 +1,5 @@
 \name "test"
-\theme "cupertino"
+\theme "gruvbox"
 title("titulo")
 title3("titulo3")
 text("hola mundo")
@@ -20,6 +20,7 @@ row(
 	box(
 		text("que"),
 		text("tal")
-	),
+	)
 )
 button("Boton", "alert(\"boton clickado\")")
+image("./bitmap.png", "width: 100px")
