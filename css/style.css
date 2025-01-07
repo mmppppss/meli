@@ -79,19 +79,86 @@ button:disabled {
 
 /* Inputs */
 input, textarea {
-    background-color: var(--input-background);
-    border: 1px solid var(--input-border);
-    padding: 10px;
-    border-radius: var(--border-radius);
-    width: 100%;
-    font-size: 16px;
-    box-sizing: border-box;
-    transition: border-color 0.3s ease;
+	background-color: var(--input-background);
+	border: 1px solid var(--input-border);
+	color: var(--text-color);
+	padding: 10px;
+	border-radius: var(--border-radius);
+	font-size: 16px;
+	box-sizing: border-box;
+	transition: border-color 0.3s ease;
+}
+
+
+.input-container {
+	position: relative;
+	width: 200px;
+}
+
+label {
+	position: absolute;
+	top: 12px;
+	left: 10px;
+	color: #666;
+	transition: 0.3s ease;
+	pointer-events: none;
+}
+
+input:not(:placeholder-shown) + label {
+  transform: translateY(-24px);
+  font-size: 12px;
+  padding: 1px 4px 1px 6px ;
+  color: var(--input-focus-border);
+  background-color: var(--input-background);
+  border-radius: 5px;
 }
 
 input:focus, textarea:focus {
-    border-color: var(--input-focus-border);
-    outline: none;
+	border-color: var(--input-focus-border);
+	outline: none;
+}
+
+table {
+	border-collapse: separate;
+	border-spacing: 0;
+	border-radius: var(--border-radius);
+	box-shadow: var(--box-shadow);
+	overflow: hidden;
+	background-color: var(--input-background);
+	/*border: 1px solid var(--input-border);*/
+	margin: 20px;
+}
+
+th, td {
+	padding: 12px;
+	text-align: center;
+	border-bottom: 1px solid var(--input-border);
+}
+table tr:first-child,
+th {
+	background-color: var(--secondary-color);
+	color: var(--link-hover-color);
+	font-weight: 800;
+}
+
+td {
+	border-bottom: 1px solid var(--input-border);
+}
+
+tr:last-child td {
+	border-bottom: none;
+}
+
+tr:hover {
+	background-color: var(--secondary-color);
+}
+
+table tr:first-child th:first-child {
+	border-top-left-radius: var(--border-radius);
+}
+
+table tr:first-child th:last-child {
+	border-top-right-radius: var(--border-radius);
 }
 
 @media (max-width: 600px) {
@@ -113,7 +180,7 @@ input:focus, textarea:focus {
 /* Para pantallas medianas (tabletas) */
 @media (max-width: 900px) {
     .row {
-        justify-content: space-around;
+        /*justify-content: space-around;*/
     }
 }
 

@@ -1,5 +1,5 @@
 \name "test"
-\theme "gruvbox"
+\theme "cupertino"
 title("titulo")
 title3("titulo3")
 text("hola mundo")
@@ -22,5 +22,13 @@ row(
 		text("tal")
 	)
 )
+row(text("Nombre:"), input("text"))
 button("Boton", "alert(\"boton clickado\")")
 image("./bitmap.png", "width: 100px")
+\n
+list("hola", "mundo", "test")
+table(
+	row("hola", "mundo"),
+	row("que", "tal"),
+	row("que", "tal", "mundo")
+)

@@ -39,14 +39,20 @@ class Parser:
             self.button()
         if tk == Tokens.IMG:
             self.imagen()
-
+        if tk == Tokens.INP:
+            self.input()
+        if tk == Tokens.LST:
+            self.list()
+            self.analex.TK.printTK()
+        if tk == Tokens.TBL:
+            self.table()
 
     def text(self):
         self.analex.analex()
         if self.analex.TK.tokenType == Tokens.PAP:
             self.analex.analex()
             if self.analex.TK.tokenType == Tokens.CAD:
-                temp=f"<span>{self.analex.TK.value}</span>\n"
+                temp=f"<span>{self.analex.TK.value}</span>"
                 self.analex.analex()
                 if self.analex.TK.tokenType == Tokens.PCI:
                     self.result+=temp
@@ -192,28 +198,142 @@ class Parser:
                 ruta = self.analex.TK.value
                 self.analex.analex()
             else:
-                print("ERROR(link) Se esperaba un STRING")
+                print("ERROR(image) Se esperaba un STRING")
                 exit(1)
             if self.analex.TK.tokenType == Tokens.COM:
                 self.analex.analex()
             else:
-                print("ERROR(link) Se esperaba una Comma")
+                print("ERROR(image) Se esperaba una Comma")
                 exit(1)
             if self.analex.TK.tokenType == Tokens.CAD:
                 css= self.analex.TK.value
                 self.analex.analex()
             else:
-                print("ERROR(link) Se esperaba una CADENA")
+                print("ERROR(image) Se esperaba una CADENA")
                 exit(1)
             if self.analex.TK.tokenType == Tokens.PCI:
                 self.analex.analex()
             else:
-                print("ERROR(link) Se esperaba )")
+                print("ERROR(image) Se esperaba )")
                 exit(1)
             self.result+=f'<img src="{ruta}" style="{css.replace('\"', '\'')}">\n'
         else:
-            print("ERROR(title) se esperaba (")
+            print("ERROR(image) se esperaba (")
+    
+    def input(self):
+        self.analex.analex()
+        if self.analex.TK.tokenType == Tokens.PAP:
+            self.analex.analex()
+            placeholder = ""
+            type = ""
+            if self.analex.TK.tokenType == Tokens.CAD:
+                type= self.analex.TK.value
+                self.analex.analex()
 
+            else:
+                print("ERROR(input) Se esperaba un STRING")
+                exit(1)
+            if self.analex.TK.tokenType == Tokens.COM:
+                self.analex.analex()
+                if self.analex.TK.tokenType == Tokens.CAD:
+                    placeholder = self.analex.TK.value
+                    self.analex.analex()
+                else:
+                    print("ERROR(inpu) Se esperaba una CADENA")
+                    exit(1)
+            if self.analex.TK.tokenType == Tokens.PCI:
+                self.analex.analex()
+            else:
+                print("ERROR(input) Se esperaba )")
+                exit(1)
+            label = '<label for="input">  {placeholder}  </label>' if placeholder!="" else ""
+            print(label)
+            self.result+=f'<div class="input-container"><input type="{type}" id="input" />{label}</div>\n'
+        else:
+            print("ERROR(title) se esperaba (")
+    
+    def list(self):
+        self.analex.analex()
+        if self.analex.TK.tokenType == Tokens.PAP:
+            self.analex.analex()
+            if self.analex.TK.tokenType == Tokens.CAD:
+                element= self.analex.TK.value
+                self.analex.analex()
+                more = self.moreList()
+                self.result+=f'<ul><li>{element}</li>{more}</ul>'
+                self.analex.analex()
+    
+    def moreList(self):
+        if self.analex.TK.tokenType == Tokens.COM:
+            self.analex.analex()
+            if self.analex.TK.tokenType == Tokens.CAD:
+                element= self.analex.TK.value
+                self.analex.analex()
+                more = self.moreList()
+                result=f'<li>{element}</li>{more}'
+                return result
+        else:
+            return ""
+    
+    def table(self):
+        self.analex.analex()
+        if self.analex.TK.tokenType == Tokens.PAP:
+            self.result+='<table>\n'
+            self.analex.analex()
+            if self.analex.TK.tokenType == Tokens.ROW:
+                self.tableRow()
+                self.tableMoreRow()
+                if self.analex.TK.tokenType == Tokens.PCI:
+                    self.result+='</table>\n'
+                    self.analex.analex()
+                else:
+                    print("ERROR(table) se esperaba )")
+            else:
+                print("ERROR(table) se esperaba row()")
+
+    def tableRow(self):
+        self.analex.analex()
+        if self.analex.TK.tokenType == Tokens.PAP:
+            self.analex.analex()
+            self.result += f"<tr>\n"
+            if self.analex.TK.tokenType == Tokens.CAD:
+                self.result += f"<td>{self.analex.TK.value}</td>\n"
+                self.analex.analex()
+                self.moreCad()
+                if self.analex.TK.tokenType == Tokens.PCI:
+                    self.analex.analex()
+                    self.result += f"</tr>\n"
+                else:
+                    print("ERROR(table, row) se esperaba )")
+
+
+    def tableMoreRow(self):
+        if self.analex.TK.tokenType == Tokens.COM:
+            self.analex.analex()
+            if self.analex.TK.tokenType == Tokens.ROW:
+                self.tableRow()
+                self.tableMoreRow()
+            else:
+                print("ERROR(table, row) se esperaba row()")
+
+    def moreCad(self):
+        if self.analex.TK.tokenType == Tokens.COM:
+            self.analex.analex()
+            if self.analex.TK.tokenType == Tokens.CAD:
+                self.result += f"<td>{self.analex.TK.value}</td>"
+                self.analex.analex()
+                self.moreCad()
+            else:
+                print("ERROR(table, row) se esperaba un STRING")
+
+
+
+        
+
+
+
+
+        
     def getResult(self):
         return f"""<!DOCTYPE html>
 <html lang="en">

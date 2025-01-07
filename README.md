@@ -61,7 +61,20 @@ Programa para hacer intefaces modernas
     genera:
         <button onclick="accion">nombre</button>
 
+- Inputs
+    input("tipo", "placeholder")
+    placeholder es opcional
+    genera
+        <input type="tipo" placeholder="placeholder">
 
+- Listas
+    list("elem1", "elem2", ..., elemN)
+
+- Tablas:
+    table(
+        row("cadena", "Texto"),
+        row("cadena", "Texto")
+    )
 
 ## temas disponibles:
     normal
