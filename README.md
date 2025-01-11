@@ -76,14 +76,24 @@ Programa para hacer intefaces modernas
         row("cadena", "Texto")
     )
 
+- Agregar ID a un elemento
+    elemento#id(...)
+    text#idTexto("hola")
+    genera:
+        <elemento id="id">...</elemento>
+        <span id="idTexto">hola</span>
+
+- Agregar ID a un elemento
+    elemento.class(...)
+    text.classTexto("hola")
+    genera:
+        <elemento class="class">...</elemento>
+        <span class="classTexto">hola</span>
+
 ## temas disponibles:
     normal
     cupertino
     gruvbox
 
 
-## elementos
-text("HOLA")
-<span>HOLA</span>
- button("NOMBRE", accion)
- <button onclick="accion">NOMBRE</button>
+#

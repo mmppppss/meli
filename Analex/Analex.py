@@ -43,6 +43,12 @@ class Analex:
                     estado = 10
                     ac=ac+c
                     self.reader.avanzar()
+                elif c == "#":
+                    estado = 12
+                    self.reader.avanzar()
+                elif c == ".":
+                    estado = 14
+                    self.reader.avanzar()
                 else:
                     #print("ERROR",c)
                     return
@@ -101,6 +107,24 @@ class Analex:
             elif estado == 11:
                 self.TK.createToken(Tokens.NUM, ac)
                 return
+            elif estado == 12: 
+                if c.isalpha():
+                    ac += c
+                    self.reader.avanzar()
+                    estado = 12
+                else:
+                    estado = 13
+            elif estado == 13:
+                self.TK.createToken(Tokens.ID_, ac)
+                return
 
-
-
+            elif estado == 14: 
+                if c.isalpha():
+                    ac += c
+                    self.reader.avanzar()
+                    estado = 14
+                else:
+                    estado = 15
+            elif estado == 15:
+                self.TK.createToken(Tokens.CLS, ac)
+                return

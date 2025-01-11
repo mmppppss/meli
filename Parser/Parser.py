@@ -43,16 +43,25 @@ class Parser:
             self.input()
         if tk == Tokens.LST:
             self.list()
-            self.analex.TK.printTK()
         if tk == Tokens.TBL:
             self.table()
-
+    def modifier(self):
+        mod = ""
+        while self.analex.TK.tokenType != Tokens.PAP:
+            if self.analex.TK.tokenType == Tokens.ID_:
+                mod += f' id="{self.analex.TK.value}"'
+                self.analex.analex()
+            elif self.analex.TK.tokenType == Tokens.CLS:
+                mod += f' class="{self.analex.TK.value}"'
+                self.analex.analex()
+        return mod
     def text(self):
         self.analex.analex()
+        mod = self.modifier()
         if self.analex.TK.tokenType == Tokens.PAP:
             self.analex.analex()
             if self.analex.TK.tokenType == Tokens.CAD:
-                temp=f"<span>{self.analex.TK.value}</span>"
+                temp=f"<span{mod}>{self.analex.TK.value}</span>\n"
                 self.analex.analex()
                 if self.analex.TK.tokenType == Tokens.PCI:
                     self.result+=temp
@@ -88,8 +97,9 @@ class Parser:
 
     def box(self, type):
         self.analex.analex()
+        mod = self.modifier()
         if self.analex.TK.tokenType == Tokens.PAP:
-            self.result+=f"<div class='{type}'>\n"
+            self.result+=f"<div class='{type}'{mod}>\n"
             self.analex.analex()
             self.sentencia()
             self.moreSent()
@@ -111,10 +121,11 @@ class Parser:
         if self.analex.TK.tokenType == Tokens.NUM:
             tempSize = int(self.analex.TK.value);
             self.analex.analex()
+        mod = self.modifier()
         if self.analex.TK.tokenType == Tokens.PAP:
             self.analex.analex()
             if self.analex.TK.tokenType == Tokens.CAD:
-                self.result+=f"<h{tempSize}>{self.analex.TK.value}</h{tempSize}>\n"
+                self.result+=f"<h{tempSize}{mod}>{self.analex.TK.value}</h{tempSize}>\n"
                 self.analex.analex()
                 if self.analex.TK.tokenType == Tokens.PCI:
                     self.analex.analex()
@@ -127,6 +138,7 @@ class Parser:
 
     def link(self):
         self.analex.analex()
+        mod = self.modifier()
         if self.analex.TK.tokenType == Tokens.PAP:
             self.analex.analex()
             alt = ""
@@ -153,11 +165,12 @@ class Parser:
             else:
                 print("ERROR(link) Se esperaba )")
                 exit(1)
-            self.result+=f"<a href={href}>{alt}</a>\n"
+            self.result+=f"<a href={href} {mod}>{alt}</a>\n"
         else:
             print("ERROR(title) se esperaba (")
     def button(self):
         self.analex.analex()
+        mod = self.modifier()
         if self.analex.TK.tokenType == Tokens.PAP:
             self.analex.analex()
             alt = ""
@@ -184,12 +197,13 @@ class Parser:
             else:
                 print("ERROR(link) Se esperaba )")
                 exit(1)
-            self.result+=f'<button onclick="{action.replace('"',"'")}">{alt}</button>\n'
+            self.result+=f'<button onclick="{action.replace('"',"'")}"{mod}>{alt}</button>\n'
         else:
             print("ERROR(title) se esperaba (")
     
     def imagen(self):
         self.analex.analex()
+        mod = self.modifier()
         if self.analex.TK.tokenType == Tokens.PAP:
             self.analex.analex()
             css = ""
@@ -216,12 +230,13 @@ class Parser:
             else:
                 print("ERROR(image) Se esperaba )")
                 exit(1)
-            self.result+=f'<img src="{ruta}" style="{css.replace('\"', '\'')}">\n'
+            self.result+=f'<img src="{ruta}" style="{css.replace('\"', '\'')}"{mod}/>\n'
         else:
             print("ERROR(image) se esperaba (")
     
     def input(self):
         self.analex.analex()
+        mod = self.modifier()
         if self.analex.TK.tokenType == Tokens.PAP:
             self.analex.analex()
             placeholder = ""
@@ -239,28 +254,28 @@ class Parser:
                     placeholder = self.analex.TK.value
                     self.analex.analex()
                 else:
-                    print("ERROR(inpu) Se esperaba una CADENA")
+                    print("ERROR(input) Se esperaba una CADENA")
                     exit(1)
             if self.analex.TK.tokenType == Tokens.PCI:
                 self.analex.analex()
             else:
                 print("ERROR(input) Se esperaba )")
                 exit(1)
-            label = '<label for="input">  {placeholder}  </label>' if placeholder!="" else ""
-            print(label)
-            self.result+=f'<div class="input-container"><input type="{type}" id="input" />{label}</div>\n'
+            label = f'<label for="input">  {placeholder}  </label>' if placeholder!="" else ""
+            self.result+=f'<div class="input-container"><input type="{type}"{mod}/>{label}</div>\n'
         else:
             print("ERROR(title) se esperaba (")
     
     def list(self):
         self.analex.analex()
+        mod = self.modifier()
         if self.analex.TK.tokenType == Tokens.PAP:
             self.analex.analex()
             if self.analex.TK.tokenType == Tokens.CAD:
                 element= self.analex.TK.value
                 self.analex.analex()
                 more = self.moreList()
-                self.result+=f'<ul><li>{element}</li>{more}</ul>'
+                self.result+=f'<ul{mod}>\n<li>{element}</li>\n{more}</ul>'
                 self.analex.analex()
     
     def moreList(self):
@@ -270,15 +285,16 @@ class Parser:
                 element= self.analex.TK.value
                 self.analex.analex()
                 more = self.moreList()
-                result=f'<li>{element}</li>{more}'
+                result=f'<li>{element}</li>\n{more}'
                 return result
         else:
             return ""
     
     def table(self):
         self.analex.analex()
+        mod = self.modifier()
         if self.analex.TK.tokenType == Tokens.PAP:
-            self.result+='<table>\n'
+            self.result+='<table{mod}>\n'
             self.analex.analex()
             if self.analex.TK.tokenType == Tokens.ROW:
                 self.tableRow()
@@ -293,9 +309,10 @@ class Parser:
 
     def tableRow(self):
         self.analex.analex()
+        mod = self.modifier()
         if self.analex.TK.tokenType == Tokens.PAP:
             self.analex.analex()
-            self.result += f"<tr>\n"
+            self.result += f"<tr{mod}>\n"
             if self.analex.TK.tokenType == Tokens.CAD:
                 self.result += f"<td>{self.analex.TK.value}</td>\n"
                 self.analex.analex()

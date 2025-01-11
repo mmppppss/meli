@@ -5,16 +5,16 @@ title3("titulo3")
 text("hola mundo")
 \n
 link("google","https://google.com")
-box(
+box#cin(
 	text("hola meli"),
 	text("hola mundo"),
-	row(text("text"), text("in row"))
+	row#id.ac(text("text"), text("in row"))
 )
 \n
 \n
 row(
 	box(
-		text("hola"),
+		text#asd.qwe("hola"),
 		text("mundo")
 	),
 	box(
@@ -23,12 +23,14 @@ row(
 	)
 )
 row(text("Nombre:"), input("text"))
-button("Boton", "alert(\"boton clickado\")")
-image("./bitmap.png", "width: 100px")
+input#do.ud("password", "Contraseña:")
+button.isa#oaa("Boton", "alert(\"boton clickado\")")
+image#masd("./bitmap.png", "width: 100px")
 \n
-list("hola", "mundo", "test")
-table(
-	row("hola", "mundo"),
-	row("que", "tal"),
-	row("que", "tal", "mundo")
+list#asd("hola", "mundo", "test")
+table.ads(
+	row#asd.qwe("hola", "mundo"),
+	row.qw("que", "tal"),
+	row.rew("que", "tal", "mundo")
 )
+text#meli("hola mundo"),

@@ -27,6 +27,8 @@ class Tokens:
     ITL = "ITL"#italic
 
     NUM = "NUM"
+    ID_ = "ID_"
+    CLS = "CLS"
 
     reservados = ["text", "image", "link", "title", "list",
                   "form", "input", "row", "table", "button", "box", "name", "theme", "n", "b", "i"]

@@ -172,7 +172,6 @@ table tr:first-child th:last-child {
     }
 
     .row {
-        flex-direction: column;
         gap: 10px;
     }
 }

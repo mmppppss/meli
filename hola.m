@@ -1,7 +1,7 @@
 \theme "cupertino"
 \name "Holaaa"
 
-box(
+box#id(
 	row(
 		text("hola"),
 		text("mundo")
