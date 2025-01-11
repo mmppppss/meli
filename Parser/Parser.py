@@ -294,7 +294,7 @@ class Parser:
         self.analex.analex()
         mod = self.modifier()
         if self.analex.TK.tokenType == Tokens.PAP:
-            self.result+='<table{mod}>\n'
+            self.result+=f'<table{mod}>\n'
             self.analex.analex()
             if self.analex.TK.tokenType == Tokens.ROW:
                 self.tableRow()
@@ -342,14 +342,6 @@ class Parser:
                 self.moreCad()
             else:
                 print("ERROR(table, row) se esperaba un STRING")
-
-
-
-        
-
-
-
-
         
     def getResult(self):
         return f"""<!DOCTYPE html>
@@ -365,7 +357,7 @@ class Parser:
 {self.result}
 
         <br>
-        <span>powered by M.E.L.I. preAlpha 0.0.1 </span>
+        <div class="watermark">powered by M.E.L.I. v1.0.0</div>
     </body>
 </html>"""
 

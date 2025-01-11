@@ -83,7 +83,7 @@ class Analex:
                 if tkt != Tokens.NAT:
                     self.TK.createToken(tkt, "_")
                 else:
-                    print("ERROR id no identefied")
+                    print(f"ERROR id {ac} no identified")
                 return
             elif estado == 6:
                 self.TK.createToken(Tokens.PAP, "_")
