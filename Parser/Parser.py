@@ -43,7 +43,7 @@ class Parser:
             self.input()
         if tk == Tokens.LST:
             self.list()
-            self.analex.TK.printTK()
+            #self.analex.TK.printTK()
         if tk == Tokens.TBL:
             self.table()
 

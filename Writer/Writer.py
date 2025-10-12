@@ -7,6 +7,3 @@ class Writer:
         with open(self.out, "w") as fileOut:
             fileOut.write(self.parser.getResult())
             fileOut.close()
-            print("Archivo escrito")
-
-        

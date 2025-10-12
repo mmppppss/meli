@@ -1,5 +1,5 @@
-\name "test"
-\theme "cupertino"
+\name "testesi"
+\theme "gruvbox"
 title("titulo")
 title3("titulo3")
 text("hola mundo")
@@ -28,7 +28,7 @@ image("./bitmap.png", "width: 100px")
 \n
 list("hola", "mundo", "test")
 table(
-	row("hola", "mundo"),
-	row("que", "tal"),
+	row("hola", "mundo", "1"),
+	row("que", "tal", "asdsad"),
 	row("que", "tal", "mundo")
 )
