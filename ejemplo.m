@@ -9,7 +9,7 @@ text("hola mundo")
 link("google","https://google.com")
 box#cin(
 	text("hola meli"),
-
+)
 
 box(
 	text("hola mundo"),
