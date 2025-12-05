@@ -8,5 +8,3 @@ class Writer:
             fileOut.write(self.parser.getResult())
             fileOut.close()
             print(f"Resultado escrito en {self.out}")
-
-        

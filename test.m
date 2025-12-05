@@ -23,3 +23,7 @@ box(
 	)
 )
 link#link("ir a google","https://google.com")
+text("hola")
+box(
+	text("hola")
+)
